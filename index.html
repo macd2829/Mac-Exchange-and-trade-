@@ -1,0 +1,498 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Mac Exchange | Global Gift & Bank Trade</title>
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Poppins & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fc;
+            color: #1a2634;
+            scroll-behavior: smooth;
+        }
+
+        /* custom scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9ecef;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b91c1c;
+            border-radius: 10px;
+        }
+
+        /* container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / navbar */
+        .navbar {
+            background: #0b1120;
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #F9C851, #E43A3A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #b9c7d9;
+            display: block;
+            letter-spacing: 0;
+        }
+        .whatsapp-header a {
+            background: #25D366;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        .whatsapp-header a:hover {
+            background: #1da851;
+            transform: scale(1.02);
+        }
+
+        /* hero section */
+        .hero {
+            background: linear-gradient(135deg, #10182F 0%, #1E2A47 100%);
+            padding: 60px 0 70px;
+            color: white;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto;
+            opacity: 0.9;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            margin-bottom: 20px;
+        }
+
+        /* section style */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #e63946;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0 20px;
+        }
+        .gift-card, .bank-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 20px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+        .gift-card:hover, .bank-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+            border-color: #e0e7ed;
+        }
+        .card-icon {
+            font-size: 2.6rem;
+            margin-bottom: 18px;
+            color: #e63946;
+        }
+        .gift-card h3, .bank-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .gift-card p, .bank-card p {
+            color: #4a5562;
+            line-height: 1.4;
+            margin: 12px 0;
+        }
+        .value-tag {
+            font-weight: 700;
+            background: #f0f2f5;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #1e2a47;
+        }
+
+        .bank-name {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 12px 0 5px;
+        }
+        .region {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #e63946;
+            font-weight: 600;
+        }
+
+        /* world banks extra style */
+        .two-column-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        .bank-region {
+            flex: 1;
+            min-width: 250px;
+            background: #ffffffcc;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #eef2fa;
+        }
+        .bank-region h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-left: 5px solid #e63946;
+            padding-left: 16px;
+            margin-bottom: 20px;
+        }
+        .bank-list {
+            list-style: none;
+        }
+        .bank-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        .bank-list i {
+            width: 28px;
+            color: #e63946;
+            font-size: 1.2rem;
+        }
+
+        /* CTA + whatsapp */
+        .trade-cta {
+            background: linear-gradient(120deg, #1e2a3a, #0f172a);
+            border-radius: 48px;
+            padding: 48px 30px;
+            text-align: center;
+            margin: 60px 0 50px;
+            color: white;
+        }
+        .trade-cta h3 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #25D366;
+            padding: 16px 38px;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            margin-top: 20px;
+            transition: 0.2s;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.2);
+        }
+        .whatsapp-btn:hover {
+            background: #1faa53;
+            transform: scale(1.02);
+        }
+        .fine-print {
+            font-size: 0.85rem;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+
+        footer {
+            background: #0b1120;
+            color: #adb7c6;
+            padding: 32px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h2 { font-size: 2rem; }
+            .section-title { font-size: 1.7rem; }
+            .trade-cta h3 { font-size: 1.5rem; }
+            .whatsapp-btn { font-size: 1rem; padding: 12px 24px; }
+            .nav-flex { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1>Mac Exchange <span>premium trade & gifts</span></h1>
+        </div>
+        <div class="whatsapp-header">
+            <a href="https://wa.me/message/4CQ6HWW6KJ3PD1" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i> Trade via WhatsApp
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge"><i class="fas fa-globe-americas"></i> USA · UK · Worldwide</div>
+        <h2>Mac Exchange – Global Gift & Bank Trading Hub</h2>
+        <p>Exclusive digital gift cards, premium bank introductions, and fast secure swaps. Connect with our team for instant trade support.</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- GIFTS SECTION (many gifts) -->
+    <div>
+        <div class="section-title"><i class="fas fa-gift" style="margin-right: 12px;"></i> Premium Gift Cards</div>
+        <div class="card-grid">
+            <!-- Gift 1 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fab fa-apple"></i></div>
+                <h3>Apple Store</h3>
+                <p>USA / UK / Global — Instant delivery, high balance ready for exchange.</p>
+                <span class="value-tag">$100 · $250 · $500</span>
+            </div>
+            <!-- Gift 2 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fab fa-amazon"></i></div>
+                <h3>Amazon Gift Cards</h3>
+                <p>Amazon.com, Amazon.co.uk, Amazon.de — Worldwide codes, flexible amounts.</p>
+                <span class="value-tag">$50 · $200 · $1000</span>
+            </div>
+            <!-- Gift 3 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fab fa-google"></i></div>
+                <h3>Google Play</h3>
+                <p>US & UK regions, also international — instant top-up.</p>
+                <span class="value-tag">$25 · $100 · $300</span>
+            </div>
+            <!-- Gift 4 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fab fa-steam"></i></div>
+                <h3>Steam Wallet</h3>
+                <p>Global Steam codes, perfect for gamers & traders.</p>
+                <span class="value-tag">$20 · $50 · $150</span>
+            </div>
+            <!-- Gift 5 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fab fa-spotify"></i></div>
+                <h3>Spotify Premium</h3>
+                <p>International gift cards, 3/6/12 months membership.</p>
+                <span class="value-tag">3mo · 6mo · 12mo</span>
+            </div>
+            <!-- Gift 6 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>Xbox & PSN</h3>
+                <p>USA, UK, EU gift cards — instant digital codes.</p>
+                <span class="value-tag">$25 · $75 · $150</span>
+            </div>
+            <!-- Gift 7 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fas fa-tshirt"></i></div>
+                <h3>Nike / Foot Locker</h3>
+                <p>USA & UK exclusive, fashion & sneaker cards.</p>
+                <span class="value-tag">$100 · $250</span>
+            </div>
+            <!-- Gift 8 -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Uber Eats / DoorDash</h3>
+                <p>Food delivery cards — USA & Canada regions.</p>
+                <span class="value-tag">$50 · $120</span>
+            </div>
+            <!-- Gift 9 extra -->
+            <div class="gift-card">
+                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Best Buy & Target</h3>
+                <p>USA top retailers, electronics & home.</p>
+                <span class="value-tag">$100 · $300</span>
+            </div>
+            <div class="gift-card">
+                <div class="card-icon"><i class="fas fa-film"></i></div>
+                <h3>Netflix & HBO Max</h3>
+                <p>Global subscriptions, US & UK ready.</p>
+                <span class="value-tag">3 months · 1 year</span>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: -15px; font-size: 0.85rem; color: #5f6c7a;"><i class="fas fa-exchange-alt"></i> All gift cards are available for trade & instant swap. Inquire via WhatsApp.</p>
+    </div>
+
+    <!-- BANKS SECTION: USA, UK and WORLDWIDE (many bank names) -->
+    <div>
+        <div class="section-title"><i class="fas fa-university"></i> Trusted Banks & Financial Partners</div>
+        <div class="two-column-layout">
+            <!-- USA Banks -->
+            <div class="bank-region">
+                <h4><i class="fas fa-flag-usa"></i> United States</h4>
+                <ul class="bank-list">
+                    <li><i class="fas fa-building"></i> JPMorgan Chase</li>
+                    <li><i class="fas fa-building"></i> Bank of America</li>
+                    <li><i class="fas fa-building"></i> Wells Fargo</li>
+                    <li><i class="fas fa-building"></i> Citibank</li>
+                    <li><i class="fas fa-building"></i> Goldman Sachs</li>
+                    <li><i class="fas fa-building"></i> Morgan Stanley</li>
+                    <li><i class="fas fa-building"></i> PNC Bank</li>
+                    <li><i class="fas fa-building"></i> Capital One</li>
+                    <li><i class="fas fa-building"></i> US Bank</li>
+                    <li><i class="fas fa-building"></i> Truist Financial</li>
+                </ul>
+            </div>
+            <!-- UK Banks -->
+            <div class="bank-region">
+                <h4><i class="fas fa-flag-checkered"></i> United Kingdom</h4>
+                <ul class="bank-list">
+                    <li><i class="fas fa-building"></i> Barclays UK</li>
+                    <li><i class="fas fa-building"></i> Lloyds Bank</li>
+                    <li><i class="fas fa-building"></i> HSBC UK</li>
+                    <li><i class="fas fa-building"></i> NatWest Group</li>
+                    <li><i class="fas fa-building"></i> Santander UK</li>
+                    <li><i class="fas fa-building"></i> Standard Chartered</li>
+                    <li><i class="fas fa-building"></i> Nationwide Building Society</li>
+                    <li><i class="fas fa-building"></i> The Co-operative Bank</li>
+                    <li><i class="fas fa-building"></i> Virgin Money UK</li>
+                    <li><i class="fas fa-building"></i> Metro Bank</li>
+                </ul>
+            </div>
+            <!-- Worldwide Banks (global) -->
+            <div class="bank-region">
+                <h4><i class="fas fa-globe"></i> Worldwide Banks</h4>
+                <ul class="bank-list">
+                    <li><i class="fas fa-globe"></i> Deutsche Bank (Germany)</li>
+                    <li><i class="fas fa-globe"></i> BNP Paribas (France)</li>
+                    <li><i class="fas fa-globe"></i> UBS Group (Switzerland)</li>
+                    <li><i class="fas fa-globe"></i> ING Group (Netherlands)</li>
+                    <li><i class="fas fa-globe"></i> Scotiabank (Canada)</li>
+                    <li><i class="fas fa-globe"></i> TD Bank (Canada)</li>
+                    <li><i class="fas fa-globe"></i> Commonwealth Bank (Australia)</li>
+                    <li><i class="fas fa-globe"></i> Westpac (Australia)</li>
+                    <li><i class="fas fa-globe"></i> DBS Bank (Singapore)</li>
+                    <li><i class="fas fa-globe"></i> Emirates NBD (UAE)</li>
+                    <li><i class="fas fa-globe"></i> BBVA (Spain/Mexico)</li>
+                    <li><i class="fas fa-globe"></i> Santander (Global)</li>
+                    <li><i class="fas fa-globe"></i> Mizuho Bank (Japan)</li>
+                    <li><i class="fas fa-globe"></i> ICBC (China)</li>
+                    <li><i class="fas fa-globe"></i> Itaú Unibanco (Brazil)</li>
+                </ul>
+            </div>
+        </div>
+        <!-- extra note: many more banks -->
+        <div style="text-align: center; margin: 10px 0 30px; font-size: 0.85rem; background: #eef3fc; border-radius: 60px; padding: 6px 12px; width: fit-content; margin-left: auto; margin-right: auto;">
+            <i class="fas fa-check-circle"></i> +40 premium financial institutions available for partnerships & trade consulting
+        </div>
+    </div>
+
+    <!-- ADDITIONAL WORLDWIDE GIFT & BANKS COMBINED SECTION (more gifts / extra banks) -->
+    <div style="background: #ffffffdd; border-radius: 36px; padding: 20px 20px 10px; margin: 20px 0; box-shadow: 0 6px 12px rgba(0,0,0,0.02);">
+        <h3 style="font-size: 1.7rem; font-weight: 700; text-align: center; margin-bottom: 20px;"><i class="fas fa-hand-holding-usd"></i> International Bank & Gift Exchange Networks</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fas fa-gift"></i> Visa/Mastercard eGifts</span>
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fas fa-pound-sign"></i> UK One4all</span>
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fas fa-euro-sign"></i> EU Prepaid Cards</span>
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fas fa-university"></i> Swiss Bank Accounts</span>
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fas fa-building"></i> Offshore Banking</span>
+            <span style="background: #f1f3f9; padding: 8px 18px; border-radius: 60px;"><i class="fab fa-bitcoin"></i> Crypto-friendly Banks</span>
+        </div>
+        <p style="text-align: center; margin: 20px 0 0px; font-size: 0.9rem;">Mac Exchange partners with licensed brokers & global institutions to offer seamless gift card trading and bank introductions. All trades are secured via escrow-friendly approach.</p>
+    </div>
+
+    <!-- Trade CTA with WhatsApp link prominent -->
+    <div class="trade-cta">
+        <h3>Ready to exchange gifts or bank assets?</h3>
+        <p style="margin: 12px 0; font-size: 1.1rem;">Our support team handles trades 24/7 — gift cards, banknotes, global portfolios.</p>
+        <a href="https://wa.me/message/4CQ6HWW6KJ3PD1" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+            <i class="fab fa-whatsapp fa-2x"></i> Send Message to Trade
+        </a>
+        <div class="fine-print">
+            <i class="fas fa-shield-alt"></i> Fast response · Secure swap · Worldwide delivery
+        </div>
+    </div>
+
+    <!-- additional banks + gifts list: USA, UK, Worldwide extended showcase -->
+    <div>
+        <div class="section-title"><i class="fas fa-chart-line"></i> Premium Banking Partners (Elite)</div>
+        <div class="card-grid">
+            <div class="bank-card">
+                <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+  
